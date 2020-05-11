@@ -35,6 +35,9 @@ def run_detect(capture_manager, model):
 
             frame = capture_manager.read()
             prediction = model.predict(frame)
+            print(f'Number of detections {prediction["num_detections"]}, boxes: {prediction["detection_boxes"]}')
+            print(f'Classes {prediction["detection_classes"]}, scores: {prediction["detection_scores"]}')
+            
             overlay = model.create_overlay(
                 frame, prediction)
             capture_manager.overlay_buff = overlay
